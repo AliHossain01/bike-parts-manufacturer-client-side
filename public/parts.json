@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Helmet",
+    "description": "Helmet Protects Head. It is very important for bikers",
+    "price": 2500,
+    "min_order": 10,
+    "quantity": 500,
+    "img": "https://raw.githubusercontent.com/AliHossain01/Motorcycle-Parts/main/engine.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Engine",
+    "description": "Engine is the heart of a Bike",
+    "price": 15000,
+    "min_order": 5,
+    "quantity": 50,
+    "img": "https://raw.githubusercontent.com/AliHossain01/Motorcycle-Parts/main/engine.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Fuel Tank",
+    "description": "Fuel Tank reserve the Oil",
+    "price": 3550,
+    "min_order": 15,
+    "quantity": 1000,
+    "img": "https://raw.githubusercontent.com/AliHossain01/Motorcycle-Parts/main/fuel_tank.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Headlight",
+    "description": "Headlight makes the light",
+    "price": 550,
+    "min_order": 10,
+    "quantity": 1550,
+    "img": "https://raw.githubusercontent.com/AliHossain01/Motorcycle-Parts/main/Headlight.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Mudgurd",
+    "description": "Mudgurd Protects Tire from dust",
+    "price": 350,
+    "min_order": 10,
+    "quantity": 700,
+    "img": "https://raw.githubusercontent.com/AliHossain01/Motorcycle-Parts/main/mudgurd.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Tire",
+    "description": "Tire runs the Bike",
+    "price": 1150,
+    "min_order": 5,
+    "quantity": 2550,
+    "img": "https://raw.githubusercontent.com/AliHossain01/Motorcycle-Parts/main/tire.jpg"
+  }
+]
