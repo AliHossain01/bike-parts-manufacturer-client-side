@@ -1,6 +1,5 @@
 import React from 'react';
 import Banner from './Banner';
-import Footer from './Footer';
 import Parts from './Parts';
 import Summary from './Summary.js';
 
@@ -11,7 +10,6 @@ const Home = () => {
             <Banner></Banner>
             <Parts></Parts>
             <Summary></Summary>
-            <Footer></Footer>
         </div>
     );
 };
