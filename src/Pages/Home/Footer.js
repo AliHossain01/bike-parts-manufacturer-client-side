@@ -30,7 +30,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='my-10 text-center'>
-                <p>Copyright © 2022 - All right reserved by Bike Tools</p>
+                <p>Copyright © 2022 - All right reserved by Bike Parts</p>
             </div>
         </footer>
     );
