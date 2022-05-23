@@ -5,7 +5,6 @@ import Home from './Pages/Home/Home';
 import About from './Pages/About/About';
 import Login from './Pages/Login/Login';
 import Blog from './Pages/Blog/Blog';
-import Review from './Pages/Review/Review';
 import SignUp from './Pages/Login/SignUp';
 import RequireAuth from './Pages/Login/RequireAuth';
 import NotFound from './Pages/Shared/NotFound/NotFound';
@@ -27,7 +26,6 @@ function App() {
         <Route path='/part/:partId' element={<RequireAuth><PartDetail></PartDetail></RequireAuth>}></Route>
         <Route path="about" element={<About />} />
         <Route path="blog" element={<Blog />} />
-        <Route path="review" element={<Review />} />
         <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} >
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path="review" element={<AddReview></AddReview>}></Route>
