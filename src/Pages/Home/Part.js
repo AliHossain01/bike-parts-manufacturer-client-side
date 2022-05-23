@@ -22,7 +22,7 @@ const Part = ({ part }) => {
                 <p>Available: {quantity}</p>
                 <p><small>Minimum Order: {min_order}</small></p>
                 <div className='text-center'>
-                    <button onClick={() => navigateToPartDetail(_id)} className="btn btn-outline-dark ">Buy Now</button>
+                    <button onClick={() => navigateToPartDetail(_id)} className="btn btn-primary ">Buy Now</button>
                 </div>
             </div>
 
