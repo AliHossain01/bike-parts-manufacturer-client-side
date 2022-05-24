@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import UserRow from './UserRow';
 
+
 const Users = () => {
     const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
         method: 'GET',
@@ -16,12 +17,12 @@ const Users = () => {
     return (
         <div>
             <h2 className='text-2xl font-bold text-green-400 text-center'>User Info</h2>
-            <div class="overflow-x-auto">
+            <div class="overflow-x-auto mx-6">
                 <table class="table w-full">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>Name</th>
+
+                            <th>User Email</th>
                             <th>Action</th>
                             <th>Remove</th>
                         </tr>
