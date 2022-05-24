@@ -55,8 +55,8 @@ const ServiceDetail = () => {
                     <p><small>Minimum Order: {part.min_order}</small></p>
                     <div>
 
-
-                        <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
+                        <h2 className='text-2xl font-bold text-green-400 '>ORDER INFO</h2>
+                        <form className='grid grid-cols-1 gap-3 justify-items-center mt-2' onSubmit={handleSubmit(onSubmit)}>
 
                             <input className='mb-2' value={user?.displayName || ''} {...register("name")} />
                             <input className='mb-2' value={user?.email || ''} {...register("email")} />

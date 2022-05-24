@@ -1,0 +1,9 @@
+.product {
+    height: 400px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.product img {
+    height: 250px;
+}
