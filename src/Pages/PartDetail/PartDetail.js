@@ -48,25 +48,30 @@ const ServiceDetail = () => {
         <div className='flex  justify-center items-center'>
             <div class="card w-96 bg-base-100 shadow-xl">
                 <figure><img src={part.img} alt="Parts" /></figure>
-                <div class="card-body">
-                    <h2 className="card-title">{part.name}</h2>
-                    <p>Price: {part.price}/unit</p>
-                    <p>Available: {part.quantity}</p>
-                    <p><small>Minimum Order: {part.min_order}</small></p>
+                <div class="card-body ">
+
+                    <div>
+                        <h2 className="card-title">{part.name}</h2>
+                        <p>Price: {part.price}/unit</p>
+                        <p>Available: {part.quantity}</p>
+                        <p><small>Minimum Order: {part.min_order}</small></p>
+                    </div>
+                    <div className="divider text-2xl font-bold text-green-400 ">ORDER INFO</div>
+
                     <div>
 
-                        <h2 className='text-2xl font-bold text-green-400 '>ORDER INFO</h2>
+                        {/* <h2 className='text-2xl font-bold text-green-400 '>ORDER INFO</h2> */}
                         <form className='grid grid-cols-1 gap-3 justify-items-center mt-2' onSubmit={handleSubmit(onSubmit)}>
 
-                            <input className='mb-2' value={user?.displayName || ''} {...register("name")} />
-                            <input className='mb-2' value={user?.email || ''} {...register("email")} />
-                            <input className='mb-2' placeholder='Phone Number' {...register("phone", { required: true, maxLength: 50 })} />
+                            <input className="input input-bordered w-full max-w-xs" value={user?.displayName || ''} {...register("name")} />
+                            <input className="input input-bordered w-full max-w-xs" value={user?.email || ''} {...register("email")} />
+                            <input className="input input-bordered w-full max-w-xs" placeholder='Phone Number' {...register("phone", { required: true, maxLength: 50 })} />
 
-                            <input className='mb-2' value={part.name} {...register("pname")} />
+                            <input className="input input-bordered w-full max-w-xs" value={part.name} {...register("pname")} />
 
                             {/* <input className='mb-2' value={part.name} type="text" {...register("pname")} /> */}
-                            <input className='mb-2' defaultValue={part.min_order} type="number" {...register("quantity")} />
-                            <input className='mb-2' value={total} type="number" {...register("price")} />
+                            <input className="input input-bordered w-full max-w-xs" defaultValue={part.min_order} type="number" {...register("quantity")} />
+                            <input className="input input-bordered w-full max-w-xs" value={total} type="number" {...register("price")} />
 
 
                             <input type="submit" className="btn btn-primary w-full max-w-xs" value="Place Order" />

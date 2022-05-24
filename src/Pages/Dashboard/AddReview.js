@@ -40,9 +40,9 @@ const AddReview = () => {
 
             <form className='grid grid-cols-1 gap-2 justify-items-center' onSubmit={handleSubmit(onSubmit)}>
 
-                <input className='mb-2' value={user?.displayName} {...register("name")} />
-                <input className='mb-2' placeholder='Rating out of 5' type="number" {...register("rating")} />
-                <textarea className='mb-2' placeholder='Description' {...register("description")} />
+                <input className="input input-bordered w-full max-w-xs" value={user?.displayName} {...register("name")} />
+                <input className="input input-bordered w-full max-w-xs" placeholder='Rating out of 5' type="number" {...register("rating")} />
+                <textarea className="input input-bordered w-full max-w-xs" placeholder='Description' {...register("description")} />
 
                 <input type="submit" className="btn btn-primary  max-w-xs" value="Add Review" />
             </form>
