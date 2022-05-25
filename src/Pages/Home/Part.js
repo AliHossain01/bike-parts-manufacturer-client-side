@@ -18,7 +18,7 @@ const Part = ({ part }) => {
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{name}</h2>
                 <p><small>{description}</small></p>
-                <p>Price: {price} /unit</p>
+                <p>Price: ${price} /unit</p>
                 <p>Available: {quantity}</p>
                 <p><small>Minimum Order: {min_order}</small></p>
                 <div className='text-center'>

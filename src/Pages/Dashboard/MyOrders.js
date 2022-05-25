@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 
 const MyOrders = () => {
@@ -42,21 +42,29 @@ const MyOrders = () => {
                 <table class="table w-full">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>No.</th>
                             <th>Name</th>
                             <th>Product Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            bookings.map((a, index) => <tr>
+                            bookings.map((a, index) => <tr key={a._id}>
                                 <th>{index + 1}</th>
                                 <td>{a.name}</td>
                                 <td>{a.pname}</td>
                                 <td>{a.quantity}</td>
                                 <td>{a.price}</td>
+                                <td>
+                                    {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
+                                    {(a.price && a.paid) && <div>
+                                        <p><span className='text-success'>Paid</span></p>
+                                        <p>TransactionId: <span className='text-success'>{a.transactionId}</span></p>
+                                    </div>}
+                                </td>
                             </tr>)
                         }
 
