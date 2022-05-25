@@ -24,7 +24,6 @@ const Users = () => {
 
                             <th>User Email</th>
                             <th>Action</th>
-                            <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody>

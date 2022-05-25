@@ -60,7 +60,7 @@ const ServiceDetail = () => {
 
                     <div>
 
-                        {/* <h2 className='text-2xl font-bold text-green-400 '>ORDER INFO</h2> */}
+
                         <form className='grid grid-cols-1 gap-3 justify-items-center mt-2' onSubmit={handleSubmit(onSubmit)}>
 
                             <input className="input input-bordered w-full max-w-xs" value={user?.displayName || ''} {...register("name")} />
@@ -70,7 +70,7 @@ const ServiceDetail = () => {
                             <input className="input input-bordered w-full max-w-xs" value={part.name} {...register("pname")} />
 
                             {/* <input className='mb-2' value={part.name} type="text" {...register("pname")} /> */}
-                            <input className="input input-bordered w-full max-w-xs" defaultValue={part.min_order} type="number" {...register("quantity")} />
+                            <input className="input input-bordered w-full max-w-xs" min={part.min_order} max={part.quantity} type="number" {...register("quantity")} />
                             <input className="input input-bordered w-full max-w-xs" value={total} type="number" {...register("price")} />
 
 
