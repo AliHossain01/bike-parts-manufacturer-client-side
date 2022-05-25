@@ -21,14 +21,14 @@ const Reviews = () => {
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 justify-items-center mt-5'>
                     {
-                        reviews.slice(-3).map((review) => <div className='shadow-lg rounded-2xl w-[250px] bg-white p-4'>
+                        reviews.slice(-3).map((review) => <div className='shadow-lg rounded-2xl w-[350px] bg-white p-4'>
 
                             <div className='gap-4 flex justify-between items-center'>
 
-                                <div className=' flex flex-col justify-end'>
-                                    <span className='text-gray-600 font-medium'>{review.name}</span>
-                                    <span className='text-gray-400 text-xs'>{review.rating}</span>
-                                    <span className='text-gray-400 text-xs'>{review.description}</span>
+                                <div className=' flex flex-col justify-end text-center'>
+                                    <span className='text-gray-600 text-xl'>Name: {review.name}</span>
+                                    <span className='text-gray-400 text-lg'>Rating: {review.rating}</span>
+                                    <span className='text-gray-400 text-sm'>Description: {review.description}</span>
                                 </div>
                             </div>
 

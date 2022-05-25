@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { useForm } from "react-hook-form";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
-const ServiceDetail = () => {
+const PartDetail = () => {
     const { partId } = useParams();
     const [part, setPart] = useState({});
-    const { register, handleSubmit, reset } = useForm();
+
     const [user, loading, error] = useAuthState(auth);
 
     const [disable, setDisable] = useState(false);
-    const [quantity, setQuantity] = useState();
+    const [uquantity, setUquantity] = useState();
 
 
 
@@ -27,17 +27,18 @@ const ServiceDetail = () => {
 
     }, [])
 
-    const total = part.price * part.min_order;
+
 
 
 
     const handleInputQuantity = event => {
         const inputQuantity = event.target.value;
-        setQuantity(inputQuantity);
+        setUquantity(inputQuantity);
 
 
     }
 
+    const defaultQuantity = parseInt(part.quantity);
 
     const handlePlaceOrder = event => {
 
@@ -59,6 +60,25 @@ const ServiceDetail = () => {
                     event.target.reset();
                 }
             })
+
+        const newQuantity = defaultQuantity - parseInt(uquantity);
+        const deliveredQuantity = { ...part, quantity: newQuantity };
+        setPart(deliveredQuantity);
+
+        const url = `https://secure-dawn-45035.herokuapp.com/part/${partId}`;
+
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(deliveredQuantity)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+
+
+
     }
 
 
@@ -84,14 +104,14 @@ const ServiceDetail = () => {
                             <br />
                             <input className="input input-bordered w-full max-w-xs mt-2" type="email" value={user?.email} name="email" placeholder='email' required readOnly disabled />
                             <br />
-                            <input className="input input-bordered w-full max-w-xs mt-2" type="text" name="phone" placeholder='phone' required />
+                            <input className="input input-bordered w-full max-w-xs mt-2" type="text" name="phone" placeholder='Enter your phone no.' required />
                             <br />
                             <input className="input input-bordered w-full max-w-xs mt-2" type="text" value={part.name} name="pname" required readOnly />
                             <br />
-                            <input className="input input-bordered w-full max-w-xs mt-2" type="number" name="quantity" placeholder='quantity' required onChange={handleInputQuantity} />
+                            <input className="input input-bordered w-full max-w-xs mt-2" type="number" name="quantity" placeholder='Quantity' required onChange={handleInputQuantity} />
 
                             <br />
-                            <input className='btn btn-primary mt-2' type="submit" value="Place Order" disabled={(quantity < part.min_order || quantity > part.quantity) && !disable} />
+                            <input className='btn btn-primary mt-2' type="submit" value="Place Order" disabled={(uquantity < part.min_order || uquantity > part.quantity) && !disable} />
                         </form>
 
                         <ToastContainer />
@@ -102,5 +122,5 @@ const ServiceDetail = () => {
     );
 };
 
-export default ServiceDetail;
+export default PartDetail;
 
