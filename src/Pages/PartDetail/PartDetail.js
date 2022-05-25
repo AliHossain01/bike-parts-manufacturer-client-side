@@ -5,12 +5,18 @@ import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const ServiceDetail = () => {
     const { partId } = useParams();
     const [part, setPart] = useState({});
     const { register, handleSubmit, reset } = useForm();
     const [user, loading, error] = useAuthState(auth);
+
+    const [disable, setDisable] = useState(false);
+    const [quantity, setQuantity] = useState();
+
+
 
     useEffect(() => {
         const url = `https://secure-dawn-45035.herokuapp.com/part/${partId}`;
@@ -24,23 +30,36 @@ const ServiceDetail = () => {
     const total = part.price * part.min_order;
 
 
-    const onSubmit = data => {
-        // console.log(data);
-        const url = 'https://secure-dawn-45035.herokuapp.com/booking';
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
-                toast('Order Placed');
-                reset()
+
+    const handleInputQuantity = event => {
+        const inputQuantity = event.target.value;
+        setQuantity(inputQuantity);
+
+
+    }
+
+
+    const handlePlaceOrder = event => {
+
+        event.preventDefault();
+        const order = {
+            name: user.displayName,
+            email: user.email,
+            phone: event.target.phone.value,
+            pname: part.name,
+            quantity: event.target.quantity.value,
+            price: event.target.quantity.value * part.price
+
+        }
+        axios.post('https://secure-dawn-45035.herokuapp.com/booking', order)
+            .then(response => {
+                const { data } = response;
+                if (data.insertedId) {
+                    toast('Your order is booked!!!');
+                    event.target.reset();
+                }
             })
-    };
+    }
 
 
 
@@ -60,31 +79,24 @@ const ServiceDetail = () => {
 
                     <div>
 
+                        <form onSubmit={handlePlaceOrder}>
+                            <input className="input input-bordered w-full max-w-xs mt-2" type="text" value={user?.displayName} name="name" placeholder='name' required readOnly disabled />
+                            <br />
+                            <input className="input input-bordered w-full max-w-xs mt-2" type="email" value={user?.email} name="email" placeholder='email' required readOnly disabled />
+                            <br />
+                            <input className="input input-bordered w-full max-w-xs mt-2" type="text" name="phone" placeholder='phone' required />
+                            <br />
+                            <input className="input input-bordered w-full max-w-xs mt-2" type="text" value={part.name} name="pname" required readOnly />
+                            <br />
+                            <input className="input input-bordered w-full max-w-xs mt-2" type="number" name="quantity" placeholder='quantity' required onChange={handleInputQuantity} />
 
-                        <form className='grid grid-cols-1 gap-3 justify-items-center mt-2' onSubmit={handleSubmit(onSubmit)}>
-
-                            <input className="input input-bordered w-full max-w-xs" value={user?.displayName || ''} {...register("name")} />
-                            <input className="input input-bordered w-full max-w-xs" value={user?.email || ''} {...register("email")} />
-                            <input className="input input-bordered w-full max-w-xs" placeholder='Phone Number' {...register("phone", { required: true, maxLength: 50 })} />
-
-                            <input className="input input-bordered w-full max-w-xs" value={part.name} {...register("pname")} />
-
-                            {/* <input className='mb-2' value={part.name} type="text" {...register("pname")} /> */}
-                            <input className="input input-bordered w-full max-w-xs" min={part.min_order} max={part.quantity} type="number" {...register("quantity")} />
-                            <input className="input input-bordered w-full max-w-xs" value={total} type="number" {...register("price")} />
-
-
-                            <input type="submit" className="btn btn-primary w-full max-w-xs" value="Place Order" />
+                            <br />
+                            <input className='btn btn-primary mt-2' type="submit" value="Place Order" disabled={(quantity < part.min_order || quantity > part.quantity) && !disable} />
                         </form>
+
                         <ToastContainer />
-
-
-
-
                     </div>
                 </div>
-
-
             </div>
         </div>
     );
@@ -92,17 +104,3 @@ const ServiceDetail = () => {
 
 export default ServiceDetail;
 
-{/* <form className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
-    <input type="text" name="name" disabled value={user?.displayName || ''} className="input input-bordered w-full max-w-xs" />
-    <input type="email" name="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w-xs" />
-    <input type="text" name="phone" placeholder="Phone Number" className="input input-bordered w-full max-w-xs" />
-
-
-
-    <input type="text" name="pname" disabled value={part?.name || ''} className="input input-bordered w-full max-w-xs" />
-
-    <input type="number" name="quantity" defaultValue={part.min_order} className="input input-bordered w-full max-w-xs" />
-
-    <input type="number" name="price" value={total} className="input input-bordered w-full max-w-xs" />
-    <input type="submit" value="Place Order" className="btn btn-primary w-full max-w-xs" />
-</form> */}
