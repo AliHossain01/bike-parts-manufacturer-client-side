@@ -13,7 +13,7 @@ const ManageProducts = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            const url = `http://localhost:5000/part/${id}`;
+            const url = `https://secure-dawn-45035.herokuapp.com/part/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

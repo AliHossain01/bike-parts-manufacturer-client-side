@@ -13,7 +13,7 @@ const ServiceDetail = () => {
     const [user, loading, error] = useAuthState(auth);
 
     useEffect(() => {
-        const url = `http://localhost:5000/part/${partId}`;
+        const url = `https://secure-dawn-45035.herokuapp.com/part/${partId}`;
         console.log(url);
         fetch(url)
             .then(res => res.json())
@@ -26,7 +26,7 @@ const ServiceDetail = () => {
 
     const onSubmit = data => {
         // console.log(data);
-        const url = 'http://localhost:5000/booking';
+        const url = 'https://secure-dawn-45035.herokuapp.com/booking';
         fetch(url, {
             method: 'POST',
             headers: {

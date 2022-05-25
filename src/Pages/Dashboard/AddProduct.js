@@ -10,7 +10,7 @@ const AddProduct = () => {
 
     const onSubmit = data => {
         // console.log(data);
-        const url = 'http://localhost:5000/part';
+        const url = 'https://secure-dawn-45035.herokuapp.com/part';
         fetch(url, {
             method: 'POST',
             headers: {
