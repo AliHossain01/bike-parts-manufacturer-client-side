@@ -36,7 +36,7 @@ const MyOrders = () => {
     }, [user])
 
     return (
-        <div>
+        <div className='mx-4'>
             <h2 className='text-2xl font-bold text-green-300 uppercase'>My Orders</h2>
             <div class="overflow-x-auto">
                 <table class="table w-full">
@@ -48,6 +48,7 @@ const MyOrders = () => {
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Payment</th>
+                            <th>Cancel</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,6 +66,7 @@ const MyOrders = () => {
                                         <p>TransactionId: <span className='text-success'>{a.transactionId}</span></p>
                                     </div>}
                                 </td>
+                                <td><button class="btn btn-error btn-sm">Cancel</button></td>
                             </tr>)
                         }
 
@@ -75,5 +77,4 @@ const MyOrders = () => {
         </div>
     );
 };
-
 export default MyOrders;
