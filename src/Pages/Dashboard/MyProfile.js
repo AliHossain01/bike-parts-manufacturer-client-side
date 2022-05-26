@@ -15,7 +15,7 @@ const MyProfile = () => {
                 </div>
                 <div class="text-center px-3 pb-6 pt-2">
                     <h3 class="text-pink-500 text-sm bold font-sans">{user?.displayName}</h3>
-                    <p class="mt-2 font-sans font-light text-pink-500">Hello, i'm from another the other side!</p>
+                    <p class="mt-2 font-sans font-light text-pink-500">{user?.email}</p>
                 </div>
 
             </div>
