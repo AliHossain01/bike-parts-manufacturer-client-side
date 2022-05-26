@@ -22,6 +22,8 @@ import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Payment from './Pages/Dashboard/Payment';
+import Contact from './Pages/Contact/Contact';
+import AllParts from './Pages/AllParts/AllParts';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
         <Route path='/part/:partId' element={<RequireAuth><PartDetail></PartDetail></RequireAuth>}></Route>
         <Route path="about" element={<About />} />
         <Route path="blog" element={<Blog />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="allparts" element={<AllParts />} />
 
         <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} >
           <Route index element={<MyOrders></MyOrders>}></Route>

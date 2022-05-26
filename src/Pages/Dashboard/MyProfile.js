@@ -14,8 +14,8 @@ const MyProfile = () => {
                     <img src={user?.photoURL} class="rounded-full border-solid border-white border-2 -mt-3" />
                 </div>
                 <div class="text-center px-3 pb-6 pt-2">
-                    <h3 class="text-black text-sm bold font-sans">{user?.displayName}</h3>
-                    <p class="mt-2 font-sans font-light text-black">Hello, i'm from another the other side!</p>
+                    <h3 class="text-pink-500 text-sm bold font-sans">{user?.displayName}</h3>
+                    <p class="mt-2 font-sans font-light text-pink-500">Hello, i'm from another the other side!</p>
                 </div>
 
             </div>

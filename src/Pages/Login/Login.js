@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import useToken from './../../hooks/useToken';
+import { BsGoogle } from "react-icons/bs";
 
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -106,7 +107,7 @@ const Login = () => {
                     <button
                         onClick={() => signInWithGoogle()}
                         className="btn btn-outline"
-                    >Continue with Google</button>
+                    ><BsGoogle className='icon' /></button>
                 </div>
             </div>
         </div >

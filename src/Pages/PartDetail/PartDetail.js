@@ -111,7 +111,7 @@ const PartDetail = () => {
                             <input className="input input-bordered w-full max-w-xs mt-2" type="number" name="quantity" placeholder='Quantity' required onChange={handleInputQuantity} />
 
                             <br />
-                            <input className='btn btn-primary mt-2' type="submit" value="Place Order" disabled={(uquantity < part.min_order || uquantity > part.quantity) && !disable} />
+                            <input className='btn btn-outline mt-2' type="submit" value="Place Order" disabled={(uquantity < part.min_order || uquantity > part.quantity) && !disable} />
                         </form>
 
                         <ToastContainer />

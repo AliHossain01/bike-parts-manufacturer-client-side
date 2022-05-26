@@ -1,5 +1,6 @@
 import React from 'react';
 import parts from '../../assets/images/parts.jpg';
+import { RiMotorbikeFill } from "react-icons/ri";
 
 
 const Banner = () => {
@@ -10,7 +11,7 @@ const Banner = () => {
                 <h2 class="card-title text-5xl font-bold">Your Bike Solution is Here</h2>
                 <p className="py-6">Nothing compares to the simple pleasure of a bike ride. Don’t buy upgrades, ride up grades.It is the unknown around the corner that turns my wheels.</p>
                 <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Explore More</button>
+                    <button class="btn btn-outline">Explore More <RiMotorbikeFill className='icon' /></button>
                 </div>
             </div>
         </div>

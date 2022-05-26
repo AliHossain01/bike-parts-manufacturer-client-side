@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BsFillCartCheckFill } from "react-icons/bs";
 
 const Part = ({ part }) => {
     const { _id, name, img, description, price, quantity, min_order } = part;
@@ -22,7 +23,8 @@ const Part = ({ part }) => {
                 <p>Available: {quantity}</p>
                 <p><small>Minimum Order: {min_order}</small></p>
                 <div className='text-center'>
-                    <button onClick={() => navigateToPartDetail(_id)} className="btn btn-primary ">Buy Now</button>
+
+                    <button onClick={() => navigateToPartDetail(_id)} className="btn btn-outline ">Buy Now <BsFillCartCheckFill className='icon' /></button>
                 </div>
             </div>
 
