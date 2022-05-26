@@ -56,7 +56,7 @@ const PartDetail = () => {
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {
-                    toast('Your order is booked!!!');
+                    toast('Your order is Placed!!!');
                     event.target.reset();
                 }
             })
@@ -87,7 +87,7 @@ const PartDetail = () => {
         <div className='flex  justify-center items-center'>
             <div class="card w-96 bg-base-100 shadow-xl">
                 <figure><img src={part.img} alt="Parts" /></figure>
-                <div class="card-body ">
+                <div class="card-body flex">
 
                     <div>
                         <h2 className="card-title">{part.name}</h2>
@@ -109,8 +109,17 @@ const PartDetail = () => {
                             <input className="input input-bordered w-full max-w-xs mt-2" type="text" value={part.name} name="pname" required readOnly />
                             <br />
                             <input className="input input-bordered w-full max-w-xs mt-2" type="number" name="quantity" placeholder='Quantity' required onChange={handleInputQuantity} />
-
                             <br />
+                            {uquantity < part.min_order && (
+                                <p className="text-red-500 text-sm">
+                                    Minimum order {part.min_order}pcs
+                                </p>
+                            )}
+                            {uquantity > part.quantity && (
+                                <p className="text-red-500 text-sm">
+                                    Maximum order {part.quantity}pcs
+                                </p>
+                            )}
                             <input className='btn btn-outline mt-2' type="submit" value="Place Order" disabled={(uquantity < part.min_order || uquantity > part.quantity) && !disable} />
                         </form>
 

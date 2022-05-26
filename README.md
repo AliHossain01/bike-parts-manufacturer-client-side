@@ -25,4 +25,4 @@ This is the live site link [Manufacturer-Website](https://bike-parts-cd343.web.a
 * Implemented the basic version of the jwt token.
 
 
-* Technologies used : React, React Router, Firebase Authentication, tailwind, daisyUI, MongoDB
+* Technologies used : HTML, CSS, JavaScript, React, React Router, React Query, Axios, Firebase Authentication, Tailwind, daisyUI, MongoDB, Stripe(Payment).
