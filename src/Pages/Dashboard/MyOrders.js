@@ -66,7 +66,7 @@ const MyOrders = () => {
                                         <p>TransactionId: <span className='text-success'>{a.transactionId}</span></p>
                                     </div>}
                                 </td>
-                                <td><button class="btn btn-error btn-sm">Cancel</button></td>
+                                <td><button class="btn btn-error btn-xs">Cancel</button></td>
                             </tr>)
                         }
 
