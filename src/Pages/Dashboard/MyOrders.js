@@ -35,6 +35,24 @@ const MyOrders = () => {
         }
     }, [user])
 
+
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure?');
+        if (proceed) {
+            const url = `https://secure-dawn-45035.herokuapp.com/part/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    const remaining = bookings.filter(booking => booking._id !== id);
+                    setBookings(remaining);
+                })
+        }
+    }
+
+
     return (
         <div className='mx-4'>
             <h2 className='text-2xl font-bold text-green-300 uppercase'>My Orders</h2>
@@ -66,7 +84,7 @@ const MyOrders = () => {
                                         <p>TransactionId: <span className='text-success'>{a.transactionId}</span></p>
                                     </div>}
                                 </td>
-                                <td><button class="btn btn-error btn-xs">Cancel</button></td>
+                                <td><button onClick={() => handleDelete(a._id)} class="btn btn-error btn-xs">Cancel</button></td>
                             </tr>)
                         }
 
