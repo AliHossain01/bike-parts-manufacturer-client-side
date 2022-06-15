@@ -7,7 +7,22 @@ import useOrders from './../../hooks/useOrders';
 const ManageAllOrders = () => {
     const [orders, setOrders] = useOrders();
 
-    console.log(orders);
+    // console.log(orders);
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure?');
+        if (proceed) {
+            const url = `https://secure-dawn-45035.herokuapp.com/part/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    const remaining = orders.filter(order => order._id !== id);
+                    setOrders(remaining);
+                })
+        }
+    }
 
 
     return (
@@ -31,7 +46,7 @@ const ManageAllOrders = () => {
                                 <td>{book.name}</td>
                                 <td>{book.pname}</td>
                                 <td>{book.quantity}</td>
-                                <td><button class="btn btn-xs">Cancel</button></td>
+                                <td><button onClick={() => handleDelete(book._id)} class="btn btn-error btn-xs">Cancel</button></td>
 
 
                             </tr>
